@@ -578,9 +578,46 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          传感器
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         传感器
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    监听状态上报
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    状态解析
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -593,7 +630,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../InfraredRepeater/" class="md-nav__link">
+      <a href="../DeviceInfraredRepeater/" class="md-nav__link">
         红外转发器
       </a>
     </li>
@@ -607,7 +644,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../AirController/" class="md-nav__link">
+      <a href="../DeviceAirController/" class="md-nav__link">
         中央空调控制器
       </a>
     </li>
@@ -647,6 +684,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    监听状态上报
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    状态解析
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -659,7 +718,163 @@
                 
                 
                 <h1 id="_1">传感器<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h1 id="_2">传感器参数列表<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<h2 id="_2">监听状态上报<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Android</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// 状态监听</span>
+<span class="n">ReportMsgApi</span><span class="p">.</span><span class="na">setOnDeviceReport</span><span class="p">(</span><span class="k">new</span> <span class="n">ReportMsgApi</span><span class="p">.</span><span class="na">OnDeviceReport</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSensorStatusReport</span><span class="p">(</span><span class="n">DeviceSensorReportRecv</span> <span class="n">recv</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 传感器状态上报</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getZoneId</span><span class="p">();</span> <span class="c1">// 状态类型</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getZoneStatus</span><span class="p">();</span> <span class="c1">// 状态值（根据状态类型）</span>
+
+        <span class="n">recv</span><span class="p">.</span><span class="na">getTemperature</span><span class="p">();</span> <span class="c1">// 温湿度传感器 -&gt; 温度</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getHumidity</span><span class="p">();</span> <span class="c1">// 温湿度传感器 -&gt; 湿度</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getLumen</span><span class="p">();</span> <span class="c1">// 光照传感器 -&gt; 光照强度值</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getPm25</span><span class="p">();</span> <span class="c1">// 空气质量传感器 -&gt; PM2.5</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getVoc</span><span class="p">();</span> <span class="c1">// 空气质量传感器 -&gt; voc</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2 id="_3">状态解析<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li>温度、湿度数值解析</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// zone_id = &quot;sensor_temp&quot;，zone_id = &quot;sensor_humi&quot;</span>
+
+<span class="c1">// 网关上报的值是一个16进制的值，有高位和低位</span>
+<span class="c1">// 1首先要给高低位重新排序</span>
+<span class="c1">// 2然后十六进制转十进制</span>
+<span class="c1">// 3判断转成十进制后数值是否大于 32767，大于则是负值</span>
+<span class="c1">// 4除以100</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">parseTempAndHumidity</span><span class="p">(</span><span class="n">String</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">low</span> <span class="o">=</span> <span class="n">value</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="n">String</span> <span class="n">height</span> <span class="o">=</span> <span class="n">value</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+        <span class="n">String</span> <span class="n">targetValue</span> <span class="o">=</span> <span class="s">&quot;&quot;</span> <span class="o">+</span> <span class="n">height</span> <span class="o">+</span> <span class="n">low</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">valueInt</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">targetValue</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">valueInt</span> <span class="o">&gt;</span> <span class="mi">32767</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">valueInt</span> <span class="o">=</span> <span class="mi">32767</span> <span class="o">-</span> <span class="n">valueInt</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">DecimalFormat</span> <span class="n">format</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DecimalFormat</span><span class="p">(</span><span class="s">&quot;0.##&quot;</span><span class="p">);</span>
+        <span class="n">format</span><span class="p">.</span><span class="na">setRoundingMode</span><span class="p">(</span><span class="n">RoundingMode</span><span class="p">.</span><span class="na">HALF_UP</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">format</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">valueInt</span> <span class="o">/</span> <span class="mi">100</span><span class="n">F</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;--&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>PM25数值解析</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// zone_id = &quot;sensor_pm_25&quot;</span>
+
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">getPm25Level</span><span class="p">(</span><span class="n">String</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">valueInt</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">valueInt</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">valueInt</span> <span class="o">&lt;=</span> <span class="mi">50</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s">&quot;优&quot;</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">valueInt</span> <span class="o">&gt;</span> <span class="mi">51</span> <span class="o">&amp;&amp;</span> <span class="n">valueInt</span> <span class="o">&lt;=</span> <span class="mi">150</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s">&quot;良&quot;</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">valueInt</span> <span class="o">&gt;</span> <span class="mi">150</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s">&quot;差&quot;</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s">&quot;未检测到数值&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>VOC 解析</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// zone_id = &quot;sensor_voc&quot;</span>
+
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">getVocLevel</span><span class="p">(</span><span class="n">String</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="s">&quot;01&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&quot;优&quot;</span><span class="p">;</span>
+        <span class="k">case</span> <span class="s">&quot;02&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&quot;良&quot;</span><span class="p">;</span>
+        <span class="k">case</span> <span class="s">&quot;03&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&quot;差&quot;</span><span class="p">;</span>
+        <span class="k">default</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&quot;未检测到数值&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>根据 zone_status 解析</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="n">String</span> <span class="nf">parserStatus</span><span class="p">(</span><span class="n">String</span> <span class="n">deviceType</span><span class="p">,</span> <span class="n">String</span> <span class="n">reportStatus</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">binaryString</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">appDeviceType</span> <span class="o">=</span> <span class="n">DeviceTypeUtils</span><span class="p">.</span><span class="na">getInstant</span><span class="p">().</span><span class="na">getDeviceType</span><span class="p">(</span><span class="n">deviceType</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">TextUtils</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;0162&quot;</span><span class="p">,</span> <span class="n">appDeviceType</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">binaryString</span> <span class="o">=</span> <span class="n">hexString2binaryString</span><span class="p">(</span><span class="n">reportStatus</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">substring</span> <span class="o">=</span> <span class="n">reportStatus</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">reportStatus</span><span class="p">.</span><span class="na">length</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+            <span class="n">binaryString</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">toBinaryString</span><span class="p">(</span><span class="n">Integer</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">substring</span><span class="p">,</span> <span class="mi">16</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="n">String</span> <span class="n">value</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">binaryString</span><span class="p">.</span><span class="na">length</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="s">&quot;0000&quot;</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">binaryString</span><span class="p">.</span><span class="na">length</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="s">&quot;000&quot;</span> <span class="o">+</span> <span class="n">binaryString</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">binaryString</span><span class="p">.</span><span class="na">length</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="s">&quot;00&quot;</span> <span class="o">+</span> <span class="n">binaryString</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">binaryString</span><span class="p">.</span><span class="na">length</span><span class="p">()</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="s">&quot;0&quot;</span> <span class="o">+</span> <span class="n">binaryString</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">binaryString</span><span class="p">.</span><span class="na">length</span><span class="p">()</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">binaryString</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">binaryString</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">binaryString</span><span class="p">.</span><span class="na">length</span><span class="p">()</span> <span class="o">-</span> <span class="mi">4</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">String</span> <span class="n">substring1</span> <span class="o">=</span> <span class="n">value</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// 1低电量 0正常</span>
+        <span class="n">String</span> <span class="n">substring2</span> <span class="o">=</span> <span class="n">value</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// 1防拆报警 0正常</span>
+        <span class="n">String</span> <span class="n">substring4</span> <span class="o">=</span> <span class="n">value</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span> <span class="c1">// 1报警 0正常</span>
+
+        <span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">substring1</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">)</span> <span class="o">?</span> <span class="s">&quot;低电量,&quot;</span> <span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
+        <span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">substring2</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">)</span> <span class="o">?</span> <span class="s">&quot;防拆报警,&quot;</span> <span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
+
+        <span class="k">switch</span> <span class="p">(</span><span class="n">appDeviceSubtype</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="n">DeviceTypeUtils</span><span class="p">.</span><span class="na">SUBTYPE_SENSOR_HUMAN_BODY_INFRARED</span><span class="p">:</span>
+                <span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">substring4</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">)</span> <span class="o">?</span> <span class="s">&quot;监测到有人,&quot;</span> <span class="p">:</span> <span class="s">&quot;正常,&quot;</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="n">DeviceTypeUtils</span><span class="p">.</span><span class="na">SUBTYPE_SENSOR_DOOR</span><span class="p">:</span>
+                <span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">substring4</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">)</span> <span class="o">?</span> <span class="s">&quot;监测到开门,&quot;</span> <span class="p">:</span> <span class="s">&quot;监测到关门,&quot;</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="n">DeviceTypeUtils</span><span class="p">.</span><span class="na">SUBTYPE_SENSOR_SOS</span><span class="p">:</span>
+            <span class="k">case</span> <span class="n">DeviceTypeUtils</span><span class="p">.</span><span class="na">SUBTYPE_SENSOR_WATER_LOGGING</span><span class="p">:</span>
+            <span class="k">case</span> <span class="n">DeviceTypeUtils</span><span class="p">.</span><span class="na">SUBTYPE_SENSOR_CO</span><span class="p">:</span>
+            <span class="k">case</span> <span class="n">DeviceTypeUtils</span><span class="p">.</span><span class="na">SUBTYPE_SENSOR_COMBUSTIBLE_GAS</span><span class="p">:</span>
+            <span class="k">case</span> <span class="n">DeviceTypeUtils</span><span class="p">.</span><span class="na">SUBTYPE_SENSOR_SMOKE</span><span class="p">:</span>
+                <span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">substring4</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">)</span> <span class="o">?</span> <span class="s">&quot;监测到报警,&quot;</span> <span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">String</span> <span class="n">trim</span> <span class="o">=</span> <span class="n">sb</span><span class="p">.</span><span class="na">toString</span><span class="p">().</span><span class="na">trim</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">trim</span><span class="p">.</span><span class="na">endsWith</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">trim</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">trim</span><span class="p">.</span><span class="na">length</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">TextUtils</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">(</span><span class="n">trim</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s">&quot;状态正常&quot;</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">trim</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>    
+<span class="p">}</span>
+</code></pre></div>
                 
               
               
@@ -695,7 +910,7 @@
       
       
         
-        <a href="../InfraredRepeater/" class="md-footer__link md-footer__link--next" aria-label="下一页: 红外转发器" rel="next">
+        <a href="../DeviceInfraredRepeater/" class="md-footer__link md-footer__link--next" aria-label="下一页: 红外转发器" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">

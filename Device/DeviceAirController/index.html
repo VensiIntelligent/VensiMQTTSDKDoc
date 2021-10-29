@@ -11,14 +11,14 @@
         <meta name="author" content="LJJ">
       
       
-        <link rel="canonical" href="https://derrors.github.io/Device/DeviceZigbeeLock/">
+        <link rel="canonical" href="https://derrors.github.io/Device/DeviceAirController/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.4">
     
     
       
-        <title>zigbee门锁 - 威士丹利 MQTT SDK 文档</title>
+        <title>中央空调控制器 - 威士丹利 MQTT SDK 文档</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#zigbee" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              zigbee门锁
+              中央空调控制器
             
           </span>
         </div>
@@ -553,58 +553,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          zigbee门锁
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../DeviceZigbeeLock/" class="md-nav__link">
         zigbee门锁
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    监听门锁解锁状态
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    发送解锁请求
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -642,11 +595,98 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../DeviceAirController/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          中央空调控制器
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         中央空调控制器
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#airconditionerapi" class="md-nav__link">
+    AirConditionerApi
+  </a>
+  
+    <nav class="md-nav" aria-label="AirConditionerApi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    获取状态
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    控制
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deviceapi" class="md-nav__link">
+    DeviceApi
+  </a>
+  
+    <nav class="md-nav" aria-label="DeviceApi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    获取状态
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    控制
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -691,16 +731,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    监听门锁解锁状态
+  <a href="#airconditionerapi" class="md-nav__link">
+    AirConditionerApi
   </a>
+  
+    <nav class="md-nav" aria-label="AirConditionerApi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    获取状态
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    控制
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    发送解锁请求
+  <a href="#deviceapi" class="md-nav__link">
+    DeviceApi
   </a>
+  
+    <nav class="md-nav" aria-label="DeviceApi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    获取状态
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    控制
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -717,45 +797,120 @@
               
                 
                 
-                <h1 id="zigbee">Zigbee 门锁<a class="headerlink" href="#zigbee" title="Permanent link">&para;</a></h1>
-<h2 id="_1">监听门锁解锁状态<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+                <h1 id="_1">中央空调控制器<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>中央空调控制器有两种控制方式。</p>
+<ul>
+<li>一种使用 AirConditionerApi（设备类型：A001_485、A0060001、0166）。</li>
+<li>一种使用 DeviceApi 通用的控制方法（设备类型：0300VZ00E32210300ZHWK）。</li>
+</ul>
+<h2 id="airconditionerapi">AirConditionerApi<a class="headerlink" href="#airconditionerapi" title="Permanent link">&para;</a></h2>
+<h3 id="_2">获取状态<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Android</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="n">ReportMsgApi</span><span class="p">.</span><span class="na">setOnDeviceReport</span><span class="p">(</span><span class="k">new</span> <span class="n">ReportMsgApi</span><span class="p">.</span><span class="na">OnDeviceReport</span><span class="p">()</span> <span class="p">{</span>
-
-    <span class="c1">// ...</span>
+<div class="highlight"><pre><span></span><code><span class="n">AirConditionerApi</span><span class="p">.</span><span class="na">getStatus</span><span class="p">(</span><span class="n">hostId</span><span class="p">,</span> <span class="n">DEVICE_ID</span><span class="p">,</span> <span class="n">DEVICE_TYPE</span><span class="p">,</span> <span class="n">DEVICE_ZONE_ID</span><span class="p">,</span> <span class="k">new</span> <span class="n">MqttCallback</span><span class="o">&lt;</span><span class="n">AirControllerState</span><span class="p">.</span><span class="na">Recv</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onStatusReport</span><span class="p">(</span><span class="n">DeviceStateRecv</span> <span class="n">recv</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">String</span> <span class="n">status</span> <span class="o">=</span> <span class="n">recv</span><span class="p">.</span><span class="na">getStatus</span><span class="p">();</span>
-        <span class="n">String</span> <span class="n">deviceId</span> <span class="o">=</span> <span class="n">recv</span><span class="p">.</span><span class="na">getId</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="s">&quot;wait_unlock&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">status</span><span class="p">))</span> <span class="p">{</span>
-            <span class="c1">// 请求开锁</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="s">&quot;unlock&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">status</span><span class="p">)</span> <span class="o">||</span> <span class="s">&quot;success&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">status</span><span class="p">))</span> <span class="p">{</span>
-            <span class="c1">// 开锁成功</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="s">&quot;fail&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">status</span><span class="p">))</span> <span class="p">{</span>
-            <span class="c1">// 开锁失败</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="s">&quot;passwderr&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">status</span><span class="p">))</span> <span class="p">{</span>
-            <span class="c1">// 密码错误</span>
-        <span class="p">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="p">(</span><span class="n">AirControllerState</span><span class="p">.</span><span class="na">Recv</span> <span class="n">recv</span><span class="p">,</span> <span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getValue</span><span class="p">().</span><span class="na">getOnOff</span><span class="p">();</span> <span class="c1">// 开启关闭状态</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getValue</span><span class="p">().</span><span class="na">getTempSetting</span><span class="p">();</span> <span class="c1">// 设置的温度</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getValue</span><span class="p">().</span><span class="na">getTempActual</span><span class="p">();</span> <span class="c1">// 室温</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getValue</span><span class="p">().</span><span class="na">getMode</span><span class="p">();</span> <span class="c1">// 模式</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getValue</span><span class="p">().</span><span class="na">getFanSpeed</span><span class="p">();</span> <span class="c1">// 风速</span>
     <span class="p">}</span>
+<span class="p">});</span>
 </code></pre></div>
-<h2 id="_2">发送解锁请求<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">控制<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Android</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1">// password 加密后的门锁密码（加密算法需要询问我们的开发人员）</span>
-<span class="n">DeviceApi</span><span class="p">.</span><span class="na">control</span><span class="p">(</span><span class="n">hostId</span><span class="p">,</span> <span class="n">deviceId</span><span class="p">,</span> <span class="n">deviceType</span><span class="p">,</span> <span class="n">zoneId</span><span class="p">,</span> <span class="n">DeviceControlKey</span><span class="p">.</span><span class="na">ON_OFF</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="k">new</span> <span class="n">MqttCallback</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// 设置模式</span>
+<span class="c1">// cool 制冷</span>
+<span class="c1">// heat 制热</span>
+<span class="c1">// dry  除湿</span>
+<span class="c1">// fan  送风</span>
+<span class="n">AirConditionerApi</span><span class="p">.</span><span class="na">setMode</span><span class="p">(</span><span class="n">hostId</span><span class="p">,</span> <span class="n">DEVICE_ID</span><span class="p">,</span> <span class="n">DEVICE_TYPE</span><span class="p">,</span> <span class="n">DEVICE_ZONE_ID</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="k">new</span> <span class="n">MqttCallback</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
 
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// 发送成功</span>
+        <span class="n">toast</span><span class="p">(</span><span class="s">&quot;设置模式成功&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// 设置风速</span>
+<span class="c1">// low  低</span>
+<span class="c1">// mid  中</span>
+<span class="c1">// high 高</span>
+<span class="n">AirConditionerApi</span><span class="p">.</span><span class="na">setFanSpeed</span><span class="p">(</span><span class="n">hostId</span><span class="p">,</span> <span class="n">DEVICE_ID</span><span class="p">,</span> <span class="n">DEVICE_TYPE</span><span class="p">,</span> <span class="n">DEVICE_ZONE_ID</span><span class="p">,</span> <span class="n">fanspeed</span><span class="p">,</span> <span class="k">new</span> <span class="n">MqttCallback</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onFailure</span><span class="p">(</span><span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// 发送失败</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">toast</span><span class="p">(</span><span class="s">&quot;设置风速成功&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// 设置温度（除湿和送风模式下无法控制温度）</span>
+<span class="c1">// &quot;16&quot;~&quot;30&quot;</span>
+<span class="n">AirConditionerApi</span><span class="p">.</span><span class="na">setTemp</span><span class="p">(</span><span class="n">hostId</span><span class="p">,</span> <span class="n">DEVICE_ID</span><span class="p">,</span> <span class="n">DEVICE_TYPE</span><span class="p">,</span> <span class="n">DEVICE_ZONE_ID</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="k">new</span> <span class="n">MqttCallback</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">toast</span><span class="p">(</span><span class="s">&quot;设置温度成功&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// 开/关机</span>
+<span class="c1">// true  开机</span>
+<span class="c1">// false 关机</span>
+<span class="n">AirConditionerApi</span><span class="p">.</span><span class="na">turnOnOrOff</span><span class="p">(</span><span class="n">hostId</span><span class="p">,</span> <span class="n">DEVICE_ID</span><span class="p">,</span> <span class="n">DEVICE_TYPE</span><span class="p">,</span> <span class="n">DEVICE_ZONE_ID</span><span class="p">,</span> <span class="n">isOn</span><span class="p">,</span> <span class="k">new</span> <span class="n">MqttCallback</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">toast</span><span class="p">(</span><span class="s">&quot;开/关机成功&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2 id="deviceapi">DeviceApi<a class="headerlink" href="#deviceapi" title="Permanent link">&para;</a></h2>
+<h3 id="_4">获取状态<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Android</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">DeviceApi</span><span class="p">.</span><span class="na">getStatus</span><span class="p">(</span><span class="n">hostId</span><span class="p">,</span> <span class="n">deviceId</span><span class="p">,</span> <span class="n">deviceType</span><span class="p">,</span> <span class="n">zoneId</span><span class="p">,</span> <span class="k">new</span> <span class="n">MqttCallback</span><span class="o">&lt;</span><span class="n">DeviceState</span><span class="p">.</span><span class="na">Recv</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="p">(</span><span class="n">DeviceState</span><span class="p">.</span><span class="na">Recv</span> <span class="n">recv</span><span class="p">,</span> <span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getOnOrOff</span><span class="p">();</span> <span class="c1">// 开关机状态</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getModel</span><span class="p">();</span> <span class="c1">// 模式</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getWindSpeed</span><span class="p">();</span> <span class="c1">// 风速</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getCoolTemp</span><span class="p">();</span> <span class="c1">// 制冷温度</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getCoolTempMax</span><span class="p">();</span> <span class="c1">// 制冷最高可调节温度</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getCoolTempMin</span><span class="p">();</span> <span class="c1">// 制冷最低可调节温度</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getHeatTemp</span><span class="p">();</span> <span class="c1">// 制热温度</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getHeatTempMax</span><span class="p">();</span> <span class="c1">// 制热最高可调节温度</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getHeatTempMin</span><span class="p">();</span> <span class="c1">// 制热最低可调节温度</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="_5">控制<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Android</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// 开关机 controlKey = &quot;onoff&quot;, controlValue = &quot;on/off&quot;</span>
+
+<span class="c1">// 模式 controlKey = &quot;model&quot;, controlValue = &quot;3,4,7,8&quot; 制冷、制热、送风、除湿</span>
+
+<span class="c1">// 风速 controlKey = &quot;wind_speed&quot;, controlValue = &quot;1/2/3&quot; 低中高</span>
+
+<span class="c1">// 温度</span>
+<span class="c1">// 在制冷模式下 controlKey = &quot;cool_temp&quot;, controlValue = &quot;16&quot; 使用状态中的最大最小值 默认是 16~32</span>
+<span class="c1">// 在制热模式下 controlKey = &quot;heat_temp&quot;, controlValue = &quot;16&quot; 使用状态中的最大最小值 默认是 16~32</span>
+<span class="c1">// 送风、除湿模式下无法控制温度</span>
+
+<span class="n">DeviceApi</span><span class="p">.</span><span class="na">control</span><span class="p">(</span><span class="n">hostId</span><span class="p">,</span> <span class="n">deviceId</span><span class="p">,</span> <span class="n">deviceType</span><span class="p">,</span> <span class="n">zoneId</span><span class="p">,</span> <span class="n">controlKey</span><span class="p">,</span> <span class="n">controlValue</span><span class="p">,</span> <span class="k">new</span> <span class="n">MqttCallback</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">toast</span><span class="p">(</span><span class="s">&quot;控制成功&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -778,7 +933,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../DeviceSceneSwitch/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 情景开关" rel="prev">
+        <a href="../DeviceInfraredRepeater/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 红外转发器" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -787,26 +942,11 @@
               <span class="md-footer__direction">
                 上一页
               </span>
-              情景开关
+              红外转发器
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../DeviceSensor/" class="md-footer__link md-footer__link--next" aria-label="下一页: 传感器" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              传感器
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   

@@ -2,97 +2,97 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://derrors.github.io/</loc>
-         <lastmod>2021-10-28</lastmod>
+         <lastmod>2021-10-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://derrors.github.io/Android/Android/</loc>
-         <lastmod>2021-10-28</lastmod>
+         <lastmod>2021-10-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://derrors.github.io/Android/AndroidAPI/</loc>
-         <lastmod>2021-10-28</lastmod>
+         <lastmod>2021-10-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://derrors.github.io/Android/AndroidFAQ/</loc>
-         <lastmod>2021-10-28</lastmod>
+         <lastmod>2021-10-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://derrors.github.io/Device/AirController/</loc>
-         <lastmod>2021-10-28</lastmod>
+         <loc>https://derrors.github.io/Device/DeviceAirController/</loc>
+         <lastmod>2021-10-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://derrors.github.io/Device/DeviceInfraredRepeater/</loc>
+         <lastmod>2021-10-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://derrors.github.io/Device/DeviceSceneSwitch/</loc>
-         <lastmod>2021-10-28</lastmod>
+         <lastmod>2021-10-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://derrors.github.io/Device/DeviceSensor/</loc>
-         <lastmod>2021-10-28</lastmod>
+         <lastmod>2021-10-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://derrors.github.io/Device/DeviceZigbeeLock/</loc>
-         <lastmod>2021-10-28</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://derrors.github.io/Device/InfraredRepeater/</loc>
-         <lastmod>2021-10-28</lastmod>
+         <lastmod>2021-10-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://derrors.github.io/Device/addremove/</loc>
-         <lastmod>2021-10-28</lastmod>
+         <lastmod>2021-10-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://derrors.github.io/Device/area/</loc>
-         <lastmod>2021-10-28</lastmod>
+         <lastmod>2021-10-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://derrors.github.io/Device/auto/</loc>
-         <lastmod>2021-10-28</lastmod>
+         <lastmod>2021-10-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://derrors.github.io/Device/scene/</loc>
-         <lastmod>2021-10-28</lastmod>
+         <lastmod>2021-10-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://derrors.github.io/Device/status/</loc>
-         <lastmod>2021-10-28</lastmod>
+         <lastmod>2021-10-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://derrors.github.io/Host/registerloginuser/</loc>
-         <lastmod>2021-10-28</lastmod>
+         <lastmod>2021-10-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://derrors.github.io/Host/update/</loc>
-         <lastmod>2021-10-28</lastmod>
+         <lastmod>2021-10-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://derrors.github.io/iOS/iOS/</loc>
-         <lastmod>2021-10-28</lastmod>
+         <lastmod>2021-10-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://derrors.github.io/iOS/iOSAPI/</loc>
-         <lastmod>2021-10-28</lastmod>
+         <lastmod>2021-10-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://derrors.github.io/iOS/iOSFAQ/</loc>
-         <lastmod>2021-10-28</lastmod>
+         <lastmod>2021-10-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
