@@ -1,0 +1,1157 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="LJJ">
+      
+      
+        <link rel="canonical" href="https://derrors.github.io/Device/status/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.4">
+    
+    
+      
+        <title>设备控制，状态监听 - 威士丹利 MQTT SDK 文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.db9e7362.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffa724">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="orange" data-md-color-accent="deep-orange">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="威士丹利 MQTT SDK 文档" class="md-header__button md-logo" aria-label="威士丹利 MQTT SDK 文档" data-md-component="logo">
+      
+  <img src="../../src/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            威士丹利 MQTT SDK 文档
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              设备控制，状态监听
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="威士丹利 MQTT SDK 文档" class="md-nav__button md-logo" aria-label="威士丹利 MQTT SDK 文档" data-md-component="logo">
+      
+  <img src="../../src/logo.png" alt="logo">
+
+    </a>
+    威士丹利 MQTT SDK 文档
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        入门指南
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Andorid
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Andorid" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Andorid
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Android/Android/" class="md-nav__link">
+        Android SDK 集成指南
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Android/AndroidAPI/" class="md-nav__link">
+        Android SDK API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Android/AndroidFAQ/" class="md-nav__link">
+        Android SDK FAQ
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          iOS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="iOS" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          iOS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../iOS/iOS/" class="md-nav__link">
+        iOS SDK 集成指南
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../iOS/iOSAPI/" class="md-nav__link">
+        iOS SDK API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../iOS/iOSFAQ/" class="md-nav__link">
+        iOS SDK FAQ
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          网关相关
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="网关相关" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          网关相关
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Host/registerloginuser/" class="md-nav__link">
+        注册、登录、用户管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Host/update/" class="md-nav__link">
+        网关固件升级
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          设备相关
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="设备相关" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          设备相关
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../addremove/" class="md-nav__link">
+        设备的入网、离网、获取设备列表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          设备控制，状态监听
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        设备控制，状态监听
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    设备控制
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    状态监听
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    附录一 设备对应的控制值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    附录二 设备对应状态上报值
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../area/" class="md-nav__link">
+        区域
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scene/" class="md-nav__link">
+        情景
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../auto/" class="md-nav__link">
+        自动化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_6" type="checkbox" id="__nav_5_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_6">
+          特殊设备说明
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="特殊设备说明" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_6">
+          <span class="md-nav__icon md-icon"></span>
+          特殊设备说明
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DeviceSceneSwitch/" class="md-nav__link">
+        情景开关
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DeviceZigbeeLock/" class="md-nav__link">
+        zigbee门锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DeviceSensor/" class="md-nav__link">
+        传感器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InfraredRepeater/" class="md-nav__link">
+        红外转发器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AirController/" class="md-nav__link">
+        中央空调控制器
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    设备控制
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    状态监听
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    附录一 设备对应的控制值
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    附录二 设备对应状态上报值
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">设备控制，状态监听<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">设备控制<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>一般的 zigbee 设备我们通过一下接口进行状态的控制，其他特殊的设备控制请查看**特殊设备说明**</p>
+<ul>
+<li>Android</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// 控制某个设备的状态</span>
+<span class="c1">// 查看下面附录一查看不同设备对应的 controlKey 和 controlValue 值</span>
+<span class="n">DeviceApi</span><span class="p">.</span><span class="na">control</span><span class="p">(</span><span class="n">String</span> <span class="n">hostId</span><span class="p">,</span> <span class="n">String</span> <span class="n">deviceId</span><span class="p">,</span> <span class="n">String</span> <span class="n">deviceType</span><span class="p">,</span> <span class="n">String</span> <span class="n">zoneId</span><span class="p">,</span> <span class="n">String</span> <span class="n">controlKey</span><span class="p">,</span> <span class="n">String</span> <span class="n">controlValue</span><span class="p">,</span> <span class="n">IBaseCallback</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">callback</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="_3">状态监听<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Android</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// 主动获取设备状态</span>
+<span class="c1">// 获取多个设备状态</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">DeviceState</span><span class="p">.</span><span class="na">Publish</span><span class="p">.</span><span class="na">DeviceInfo</span><span class="o">&gt;</span> <span class="n">deviceInfoList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">DeviceList</span><span class="p">.</span><span class="na">Recv</span><span class="p">.</span><span class="na">Device</span> <span class="n">device</span> <span class="p">:</span> <span class="n">mDevices</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">DeviceState</span><span class="p">.</span><span class="na">Publish</span><span class="p">.</span><span class="na">DeviceInfo</span> <span class="n">info</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DeviceState</span><span class="p">.</span><span class="na">Publish</span><span class="p">.</span><span class="na">DeviceInfo</span><span class="p">();</span>
+    <span class="n">info</span><span class="p">.</span><span class="na">setId</span><span class="p">(</span><span class="n">device</span><span class="p">.</span><span class="na">getDeviceId</span><span class="p">());</span>
+    <span class="n">info</span><span class="p">.</span><span class="na">setDeviceType</span><span class="p">(</span><span class="n">device</span><span class="p">.</span><span class="na">getDeviceType</span><span class="p">());</span>
+    <span class="n">info</span><span class="p">.</span><span class="na">setZoneId</span><span class="p">(</span><span class="n">device</span><span class="p">.</span><span class="na">getZoneId</span><span class="p">());</span>
+    <span class="n">deviceInfoList</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">info</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">DeviceApi</span><span class="p">.</span><span class="na">getStatus</span><span class="p">(</span><span class="n">hostId</span><span class="p">,</span> <span class="n">deviceInfoList</span><span class="p">,</span> <span class="k">new</span> <span class="n">MqttCallback</span><span class="o">&lt;</span><span class="n">DeviceState</span><span class="p">.</span><span class="na">Recv</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="p">(</span><span class="n">DeviceState</span><span class="p">.</span><span class="na">Recv</span> <span class="n">recv</span><span class="p">,</span> <span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 多个设备的状态</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getStateList</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// 获取某个设备状态</span>
+<span class="n">DeviceApi</span><span class="p">.</span><span class="na">getStatus</span><span class="p">(</span><span class="n">hostId</span><span class="p">,</span> <span class="n">deviceId</span><span class="p">,</span> <span class="n">deviceType</span><span class="p">,</span> <span class="n">zoneId</span><span class="p">,</span> <span class="k">new</span> <span class="n">MqttCallback</span><span class="o">&lt;</span><span class="n">DeviceState</span><span class="p">.</span><span class="na">Recv</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="p">(</span><span class="n">DeviceState</span><span class="p">.</span><span class="na">Recv</span> <span class="n">recv</span><span class="p">,</span> <span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 某个设备的状态</span>
+        <span class="n">recv</span><span class="p">.</span><span class="na">getStateList</span><span class="p">().</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+
+<span class="c1">// 状态监听</span>
+<span class="n">ReportMsgApi</span><span class="p">.</span><span class="na">setOnDeviceReport</span><span class="p">(</span><span class="k">new</span> <span class="n">ReportMsgApi</span><span class="p">.</span><span class="na">OnDeviceReport</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onStatusReport</span><span class="p">(</span><span class="n">DeviceStateRecv</span> <span class="n">recv</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 设备状态上报</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSensorStatusReport</span><span class="p">(</span><span class="n">DeviceSensorReportRecv</span> <span class="n">recv</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 传感器状态上报</span>
+    <span class="p">}</span>  
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSensorStatusReport</span><span class="p">(</span><span class="n">DeviceSensorReportRecv</span> <span class="n">recv</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 获取多个设备状态, 当获取不同模块的设备状态时，网关会分几次上报，这个时候就需要用该接口了</span>
+    <span class="p">}</span>   
+<span class="p">});</span>
+</code></pre></div>
+<h2 id="_4">附录一 设备对应的控制值<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th align="left">设备名称</th>
+<th align="left">控制参数</th>
+<th align="left">控制值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">开关</td>
+<td align="left">onoff</td>
+<td align="left">on/off</td>
+</tr>
+<tr>
+<td align="left">调光灯</td>
+<td align="left">onoff</td>
+<td align="left">on/off<br>0~100:亮度</td>
+</tr>
+<tr>
+<td align="left">彩灯</td>
+<td align="left">onoff</td>
+<td align="left">on/off<br>0~100:亮度<br>254#254#254(hsl, 值范围是 0 ~ 254), 注意, 最后⼀个 l 是⽆效的)</td>
+</tr>
+<tr>
+<td align="left">⾊温灯</td>
+<td align="left">onoff</td>
+<td align="left">on/off</td>
+</tr>
+<tr>
+<td align="left">⾊温灯</td>
+<td align="left">color_temp</td>
+<td align="left">默认是0~500，某些设备会上报自己的色温范围，已上报的为准</td>
+</tr>
+<tr>
+<td align="left">插座</td>
+<td align="left">onoff</td>
+<td align="left">on/off</td>
+</tr>
+<tr>
+<td align="left">窗帘开关</td>
+<td align="left">onoff</td>
+<td align="left">open/close/stop</td>
+</tr>
+<tr>
+<td align="left">窗帘电机</td>
+<td align="left">onoff</td>
+<td align="left">进度0~100</td>
+</tr>
+<tr>
+<td align="left">电源控制器</td>
+<td align="left">onoff</td>
+<td align="left">on/off</td>
+</tr>
+<tr>
+<td align="left">晾⾐机</td>
+<td align="left">motor</td>
+<td align="left">移动电机位置 rising/falling/stop</td>
+</tr>
+<tr>
+<td align="left">晾⾐机</td>
+<td align="left">lighting</td>
+<td align="left">照明 on/off</td>
+</tr>
+<tr>
+<td align="left">晾⾐机</td>
+<td align="left">heating</td>
+<td align="left">烘⼲ on/off</td>
+</tr>
+<tr>
+<td align="left">晾⾐机</td>
+<td align="left">heating_time</td>
+<td align="left">烘⼲时间 1~180(min)</td>
+</tr>
+<tr>
+<td align="left">晾⾐机</td>
+<td align="left">wind</td>
+<td align="left">⻛⼲ on/off</td>
+</tr>
+<tr>
+<td align="left">晾⾐机</td>
+<td align="left">wind_time</td>
+<td align="left">⻛⼲时间 1~180(min)</td>
+</tr>
+<tr>
+<td align="left">晾⾐机</td>
+<td align="left">disinfection</td>
+<td align="left">消毒 on/off</td>
+</tr>
+<tr>
+<td align="left">晾⾐机</td>
+<td align="left">disinfection_time</td>
+<td align="left">消毒时间 1~30(min)</td>
+</tr>
+<tr>
+<td align="left">声光报警器</td>
+<td align="left">onoff</td>
+<td align="left">on: 打开默认报警模式<br>off: 关闭报警<br>strobe: 闪灯报警<br>siren: 声⾳报警<br>strobe-siren:声光报警<br>door:破⻔报警<br>fire:⽕警<br>sos:sos紧急报警<br>leak:漏⽔报警<br>gas:烟雾报警</td>
+</tr>
+<tr>
+<td align="left">声光报警器</td>
+<td align="left">warn_mode</td>
+<td align="left">报警模式<br>strobe:闪灯报警<br>siren:声⾳报警<br>strobe-siren:声光报警</td>
+</tr>
+<tr>
+<td align="left">声光报警器</td>
+<td align="left">duration</td>
+<td align="left">报警持续时⻓ 1~65535 默认240 单位s</td>
+</tr>
+<tr>
+<td align="left">声光报警器</td>
+<td align="left">duty_cycle</td>
+<td align="left">闪灯占空⽐ 1~100 默认50 值越小，红灯持续时间约短</td>
+</tr>
+<tr>
+<td align="left">声光报警器</td>
+<td align="left">siren_level</td>
+<td align="left">声⾳报警等级 0~3</td>
+</tr>
+<tr>
+<td align="left">⽑⼱架</td>
+<td align="left">onoff</td>
+<td align="left">1:表明是关机<br>2:表明是待机<br>3:表明是智能模式定时1⼩时<br>4:表明是智能模式定时2⼩时<br>5:表明是 智能模式定时3⼩时<br>6:表明是智能模式定时4⼩时<br>7:表明是消毒模式定时30分钟<br>8:表明是消毒模式定时45分钟<br>9:表明是消毒模式定时60分钟<br>10:表明是烘⼲模式定时1⼩时<br>11:表明是烘⼲模式定时2⼩时<br>12:表明是烘⼲模式定时3⼩时<br>13:表明是烘⼲模式定时4⼩时<br>14:表明是送⻛模式定时1⼩时<br>15:表明是送⻛模式定时2⼩时<br>16:表明是送⻛模式定时3⼩时<br>17:表明是送⻛模式定时4⼩时<br></td>
+</tr>
+<tr>
+<td align="left">⽑⼱架</td>
+<td align="left">heating</td>
+<td align="left">加热 0:关闭/1开启</td>
+</tr>
+<tr>
+<td align="left">空⽓净化器</td>
+<td align="left">onoff</td>
+<td align="left">开关机 on/off</td>
+</tr>
+<tr>
+<td align="left">空⽓净化器</td>
+<td align="left">model</td>
+<td align="left">模式<br>0:⼿动模式<br>1:⾃动模式<br>2:睡眠模式<br>3:极速模式</td>
+</tr>
+<tr>
+<td align="left">空⽓净化器</td>
+<td align="left">wind_speed</td>
+<td align="left">⻛速<br>0:⼀级<br>1:⼆级<br>2:三级</td>
+</tr>
+<tr>
+<td align="left">空⽓净化器</td>
+<td align="left">anion</td>
+<td align="left">负离⼦ on/off</td>
+</tr>
+<tr>
+<td align="left">空⽓净化器</td>
+<td align="left">child_lock</td>
+<td align="left">童锁 on/off</td>
+</tr>
+<tr>
+<td align="left">空⽓净化器</td>
+<td align="left">work_timing</td>
+<td align="left">定时运⾏ 0~12 单位小时 0为定时取消</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">附录二 设备对应状态上报值<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>没有特殊说明，设备的控制参数和上报的参数是一致的，例如开关，控制是 onoff，上报也是 onoff</p>
+<table>
+<thead>
+<tr>
+<th align="left">设备名称</th>
+<th align="left">控制参数</th>
+<th align="left">控制值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">调光灯</td>
+<td align="left">lumin</td>
+<td align="left">亮度:0~100</td>
+</tr>
+<tr>
+<td align="left">彩灯</td>
+<td align="left">hue</td>
+<td align="left">⾊相:0~100</td>
+</tr>
+<tr>
+<td align="left">彩灯</td>
+<td align="left">saturate</td>
+<td align="left">饱和度:0~100</td>
+</tr>
+<tr>
+<td align="left">彩灯</td>
+<td align="left">lumin</td>
+<td align="left">亮度:0~100</td>
+</tr>
+<tr>
+<td align="left">晾⾐机</td>
+<td align="left">motor_pos</td>
+<td align="left">当前电机位置位置<br>top:顶部<br>bottom:底部<br>middle:中间</td>
+</tr>
+<tr>
+<td align="left">⽑⼱架</td>
+<td align="left">temp</td>
+<td align="left">温度 -50~90摄氏度</td>
+</tr>
+<tr>
+<td align="left">⽑⼱架</td>
+<td align="left">model_timer</td>
+<td align="left">模式剩余时间</td>
+</tr>
+<tr>
+<td align="left">空⽓净化器</td>
+<td align="left">pm_25</td>
+<td align="left">0-500</td>
+</tr>
+<tr>
+<td align="left">空⽓净化器</td>
+<td align="left">run_time</td>
+<td align="left">累计运⾏时间 单位小时</td>
+</tr>
+<tr>
+<td align="left">空⽓净化器</td>
+<td align="left">count_down</td>
+<td align="left">定时倒计时 单位分钟</td>
+</tr>
+<tr>
+<td align="left">空⽓净化器</td>
+<td align="left">filter_time</td>
+<td align="left">滤芯1已使⽤时间 单位分钟</td>
+</tr>
+<tr>
+<td align="left">净⽔器</td>
+<td align="left">inTDS</td>
+<td align="left">原⽔TDS(溶解性固体总量) 单位ppm</td>
+</tr>
+<tr>
+<td align="left">净⽔器</td>
+<td align="left">outTDS</td>
+<td align="left">出⽔TDS(溶解性固体总量) 单位ppm</td>
+</tr>
+<tr>
+<td align="left">净⽔器</td>
+<td align="left">totalML</td>
+<td align="left">总净⽔量 单位ml</td>
+</tr>
+<tr>
+<td align="left">净⽔器</td>
+<td align="left">filter_pct</td>
+<td align="left">滤芯1寿命 单位%</td>
+</tr>
+<tr>
+<td align="left">净⽔器</td>
+<td align="left">filter_time</td>
+<td align="left">滤芯1使⽤时间 单位小时</td>
+</tr>
+<tr>
+<td align="left">净⽔器</td>
+<td align="left">filter2_pct</td>
+<td align="left">滤芯2寿命 单位%</td>
+</tr>
+<tr>
+<td align="left">净⽔器</td>
+<td align="left">filter2_time</td>
+<td align="left">滤芯2使⽤时间 单位小时</td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../addremove/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 设备的入网、离网、获取设备列表" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              设备的入网、离网、获取设备列表
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../area/" class="md-footer__link md-footer__link--next" aria-label="下一页: 区域" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              区域
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 - 2021 Vensi
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.8397ff9e.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e84347e.min.js"></script>
+      
+    
+  </body>
+</html>

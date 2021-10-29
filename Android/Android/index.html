@@ -1,0 +1,1081 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="LJJ">
+      
+      
+        <link rel="canonical" href="https://derrors.github.io/Android/Android/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.4">
+    
+    
+      
+        <title>Android SDK 集成指南 - 威士丹利 MQTT SDK 文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.db9e7362.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffa724">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="orange" data-md-color-accent="deep-orange">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#android-sdk" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="威士丹利 MQTT SDK 文档" class="md-header__button md-logo" aria-label="威士丹利 MQTT SDK 文档" data-md-component="logo">
+      
+  <img src="../../src/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            威士丹利 MQTT SDK 文档
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Android SDK 集成指南
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="威士丹利 MQTT SDK 文档" class="md-nav__button md-logo" aria-label="威士丹利 MQTT SDK 文档" data-md-component="logo">
+      
+  <img src="../../src/logo.png" alt="logo">
+
+    </a>
+    威士丹利 MQTT SDK 文档
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        入门指南
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Andorid
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Andorid" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Andorid
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Android SDK 集成指南
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Android SDK 集成指南
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#android" class="md-nav__link">
+    支持的 Android 系统版本
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    集成步骤
+  </a>
+  
+    <nav class="md-nav" aria-label="集成步骤">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sdk" class="md-nav__link">
+    查看 SDK 压缩包中内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdk_1" class="md-nav__link">
+    SDK 文件移植
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#androidmanifestxml" class="md-nav__link">
+    配置 AndroidManifest.xml
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    添加代码
+  </a>
+  
+    <nav class="md-nav" aria-label="添加代码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    初始化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mqtt" class="md-nav__link">
+    创建 MQTT 连接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    注册网关或登录网关
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AndroidAPI/" class="md-nav__link">
+        Android SDK API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AndroidFAQ/" class="md-nav__link">
+        Android SDK FAQ
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          iOS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="iOS" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          iOS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../iOS/iOS/" class="md-nav__link">
+        iOS SDK 集成指南
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../iOS/iOSAPI/" class="md-nav__link">
+        iOS SDK API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../iOS/iOSFAQ/" class="md-nav__link">
+        iOS SDK FAQ
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          网关相关
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="网关相关" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          网关相关
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Host/registerloginuser/" class="md-nav__link">
+        注册、登录、用户管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Host/update/" class="md-nav__link">
+        网关固件升级
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          设备相关
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="设备相关" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          设备相关
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Device/addremove/" class="md-nav__link">
+        设备的入网、离网、获取设备列表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Device/status/" class="md-nav__link">
+        设备控制，状态监听
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Device/area/" class="md-nav__link">
+        区域
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Device/scene/" class="md-nav__link">
+        情景
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Device/auto/" class="md-nav__link">
+        自动化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_6" type="checkbox" id="__nav_5_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_6">
+          特殊设备说明
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="特殊设备说明" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_6">
+          <span class="md-nav__icon md-icon"></span>
+          特殊设备说明
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Device/DeviceSceneSwitch/" class="md-nav__link">
+        情景开关
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Device/DeviceZigbeeLock/" class="md-nav__link">
+        zigbee门锁
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Device/DeviceSensor/" class="md-nav__link">
+        传感器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Device/InfraredRepeater/" class="md-nav__link">
+        红外转发器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Device/AirController/" class="md-nav__link">
+        中央空调控制器
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#android" class="md-nav__link">
+    支持的 Android 系统版本
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    集成步骤
+  </a>
+  
+    <nav class="md-nav" aria-label="集成步骤">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sdk" class="md-nav__link">
+    查看 SDK 压缩包中内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdk_1" class="md-nav__link">
+    SDK 文件移植
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#androidmanifestxml" class="md-nav__link">
+    配置 AndroidManifest.xml
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    添加代码
+  </a>
+  
+    <nav class="md-nav" aria-label="添加代码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    初始化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mqtt" class="md-nav__link">
+    创建 MQTT 连接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    注册网关或登录网关
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="android-sdk">Android SDK 概述<a class="headerlink" href="#android-sdk" title="Permanent link">&para;</a></h1>
+<p>Android SDK 通过使用 <a href="https://github.com/eclipse/paho.mqtt.java">eclipse/paho.mqtt.java</a>、<a href="https://github.com/eclipse/paho.mqtt.android">eclipse/paho.mqtt.android</a> 等 MQTT 库提供与智能网关的连接能力，并且提供对网关协议的解析，方便开发者迅速接入并实现智能设备控制。</p>
+<h2 id="android">支持的 Android 系统版本<a class="headerlink" href="#android" title="Permanent link">&para;</a></h2>
+<p>目前 SDK 只支持 Android 4.4 或以上的手机系统。</p>
+<h2 id="_1">集成步骤<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="sdk">查看 SDK 压缩包中内容<a class="headerlink" href="#sdk" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Vensi MQTT SDK 核心包</p>
+<ul>
+<li>libs/vensi-mqtt-sdk-proguard.jar</li>
+</ul>
+</li>
+<li>
+<p>MQTT 连接能力包</p>
+<ul>
+<li>libs/vensi-mqtt-service-java-proguard.jar</li>
+</ul>
+</li>
+<li>
+<p>MQTT 连接能力包（包含 Android 实现）</p>
+<ul>
+<li>libs/vensi-mqtt-service-android-release.aar</li>
+</ul>
+</li>
+</ul>
+<h3 id="sdk_1">SDK 文件移植<a class="headerlink" href="#sdk_1" title="Permanent link">&para;</a></h3>
+<p>复制 libs/vensi-mqtt-sdk-proguard.jar 和 libs/vensi-mqtt-service-java-proguard.jar 到工程 libs/ 目录下</p>
+<blockquote>
+<p>说明：Android 平台建议集成 libs/vensi-mqtt-service-android-release.aar 包，这时就不需要集成 libs/vensi-mqtt-service-java-proguard.jar。AAR 包的集成请自行查找相关教程。</p>
+</blockquote>
+<p>在 app/build.gradle 中添加</p>
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span> <span class="o">{</span>
+    <span class="n">implementation</span> <span class="n">files</span><span class="o">(</span><span class="s1">&#39;libs/vensi-mqtt-sdk-proguard.jar&#39;</span><span class="o">)</span>
+    <span class="n">implementation</span> <span class="n">files</span><span class="o">(</span><span class="s1">&#39;libs/vensi-mqtt-service-java-proguard.jar&#39;</span><span class="o">)</span>
+    <span class="n">implementation</span> <span class="s1">&#39;org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5&#39;</span>
+    <span class="n">implementation</span> <span class="s1">&#39;com.google.code.gson:gson:2.8.6&#39;</span>
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<p>说明：org.eclipse.paho.client.mqttv3 和 gson 版本可以修改其最新版本，但不能小于上面的版本</p>
+</blockquote>
+<h3 id="androidmanifestxml">配置 AndroidManifest.xml<a class="headerlink" href="#androidmanifestxml" title="Permanent link">&para;</a></h3>
+<p>设置相关的权限</p>
+<div class="highlight"><pre><span></span><code><span class="c">&lt;!--AndroidManifest.xml--&gt;</span>
+// 允许应用可以访问网络。
+<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.INTERNET&quot;</span> <span class="nt">/&gt;</span> 
+// 允许应用获取网络信息状态，如当前的网络连接是否有效。
+<span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.ACCESS_NETWORK_STATE&quot;</span> <span class="nt">/&gt;</span> 
+</code></pre></div>
+<h3 id="_2">添加代码<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_3">初始化<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// 是否开启 debug 模式</span>
+<span class="n">VensiMqtt</span><span class="p">.</span><span class="na">getInstance</span><span class="p">().</span><span class="na">setDebug</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="c1">// 用户名称，保持唯一</span>
+<span class="n">VensiMqtt</span><span class="p">.</span><span class="na">getInstance</span><span class="p">().</span><span class="na">setUserId</span><span class="p">(</span><span class="n">userId</span><span class="p">);</span> 
+<span class="c1">// 公司标识（网关标识）</span>
+<span class="n">VensiMqtt</span><span class="p">.</span><span class="na">getInstance</span><span class="p">().</span><span class="na">setCompany</span><span class="p">(</span><span class="n">company</span><span class="p">);</span> 
+<span class="c1">// 设置用户 OS 显示</span>
+<span class="n">VensiMqtt</span><span class="p">.</span><span class="na">getInstance</span><span class="p">().</span><span class="na">setOs</span><span class="p">(</span><span class="n">Build</span><span class="p">.</span><span class="na">MODEL</span><span class="p">);</span> 
+<span class="c1">// 设置请求回调线程</span>
+<span class="n">Handler</span> <span class="n">Handler</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Handler</span><span class="p">(</span><span class="n">Looper</span><span class="p">.</span><span class="na">getMainLooper</span><span class="p">());</span>
+<span class="n">VensiMqtt</span><span class="p">.</span><span class="na">getInstance</span><span class="p">().</span><span class="na">setMqttMessageThreadHandler</span><span class="p">(</span><span class="k">new</span> <span class="n">IMqttMessageThreadHandler</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="p">(</span><span class="n">Runnable</span> <span class="n">runnable</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Handler</span><span class="p">.</span><span class="na">post</span><span class="p">(</span><span class="n">runnable</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+<span class="c1">// 设备基础配置文件缓存路径</span>
+<span class="n">VensiMqtt</span><span class="p">.</span><span class="na">getInstance</span><span class="p">().</span><span class="na">initDeviceTypeUtils</span><span class="p">(</span><span class="n">getFilesDir</span><span class="p">().</span><span class="na">getAbsolutePath</span><span class="p">());</span> 
+</code></pre></div>
+<h4 id="mqtt">创建 MQTT 连接<a class="headerlink" href="#mqtt" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// 创建连接参数</span>
+<span class="n">ConnectOption</span> <span class="n">connectOption</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ConnectOption</span><span class="p">();</span>
+<span class="c1">// 设置连接ip或域名（例如：网关在局域网中的 192.168.1.188:1883)</span>
+<span class="n">connectOption</span><span class="p">.</span><span class="na">setServerUri</span><span class="p">(</span><span class="n">ip</span><span class="p">);</span>
+<span class="c1">// 创建连接服务，并传入连接参数</span>
+<span class="n">IMqttService</span> <span class="n">service</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JavaMqttService</span><span class="p">(</span><span class="n">connectOption</span><span class="p">);</span>
+<span class="c1">// 开始连接</span>
+<span class="n">VensiMqtt</span><span class="p">.</span><span class="na">getInstance</span><span class="p">().</span><span class="na">connectMainServer</span><span class="p">(</span><span class="n">service</span><span class="p">,</span> <span class="k">new</span> <span class="n">OnMqttStateChangedListener</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onStateChanged</span><span class="p">(</span><span class="n">String</span> <span class="n">serverIp</span><span class="p">,</span> <span class="kt">int</span> <span class="n">statue</span><span class="p">,</span> <span class="n">Throwable</span> <span class="k">case</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="n">state</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="n">MqttStateCode</span><span class="p">.</span><span class="na">MQTT_STATE_INIT</span><span class="p">:</span>
+                <span class="c1">// 初始化中</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="n">MqttStateCode</span><span class="p">.</span><span class="na">MQTT_STATE_CONNECTING</span><span class="p">:</span>
+                <span class="c1">// 正在连接服务器</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="n">MqttStateCode</span><span class="p">.</span><span class="na">MQTT_STATE_CONNECTED</span><span class="p">:</span>
+                <span class="c1">// 连接服务器成功</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="n">MqttStateCode</span><span class="p">.</span><span class="na">MQTT_STATE_CONNECT_FAILURE</span><span class="p">:</span>
+                <span class="c1">// 连接服务器失败</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="n">MqttStateCode</span><span class="p">.</span><span class="na">MQTT_STATE_CONNECT_LOST</span><span class="p">:</span>
+                <span class="c1">// 与服务器断开连接</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="n">MqttStateCode</span><span class="p">.</span><span class="na">MQTT_STATE_CONNECT_LOST_INITIATIVE</span><span class="p">:</span>
+                <span class="c1">// 手动断开连接</span>
+                <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>        
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<h4 id="_4">注册网关或登录网关<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>在连接 MQTT 成功后，可以进行注册网关-&gt;登录网关-&gt;获取登录后的 sessionId。
+如果已经进行过一次注册网关（查看网关功能相关说明），后面只需要进行登录网关的操作。</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1">// 注册网关</span>
+<span class="n">HostApi</span><span class="p">.</span><span class="na">register</span><span class="p">(</span><span class="n">hostId</span><span class="p">,</span> <span class="s">&quot;123456&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">IBaseCallback</span><span class="o">&lt;</span><span class="n">HostRegister</span><span class="p">.</span><span class="na">Recv</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="p">(</span><span class="n">HostRegister</span><span class="p">.</span><span class="na">Recv</span> <span class="n">recv</span><span class="p">,</span> <span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s">&quot;10017&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">errorCode</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">toast</span><span class="p">(</span><span class="s">&quot;等待网关管理员同意&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="s">&quot;10001&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">errorCode</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">String</span> <span class="n">sspen</span> <span class="o">=</span> <span class="n">recv</span><span class="p">.</span><span class="na">getSspen</span><span class="p">();</span>
+            <span class="k">if</span> <span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">sspen</span><span class="p">))</span> <span class="p">{</span>
+                <span class="n">toast</span><span class="p">(</span><span class="s">&quot;已注册网关, 并且已授权&quot;</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">toast</span><span class="p">(</span><span class="s">&quot;已注册网关, 但管理员未授权&quot;</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">toast</span><span class="p">(</span><span class="s">&quot;注册网关成功&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onFailure</span><span class="p">(</span><span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s">&quot;10026&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">errorCode</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">toast</span><span class="p">(</span><span class="s">&quot;网关标识错误&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">toast</span><span class="p">(</span><span class="s">&quot;注册网关失败 &quot;</span> <span class="o">+</span> <span class="n">errorCode</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// 登录网关</span>
+<span class="n">HostApi</span><span class="p">.</span><span class="na">login</span><span class="p">(</span><span class="n">hostId</span><span class="p">,</span> <span class="s">&quot;123456&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">IBaseCallback</span><span class="o">&lt;</span><span class="n">HostLogin</span><span class="p">.</span><span class="na">Recv</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="p">(</span><span class="n">HostLogin</span><span class="p">.</span><span class="na">Recv</span> <span class="n">recv</span><span class="p">,</span> <span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">VensiMqtt</span><span class="p">.</span><span class="na">getInstance</span><span class="p">().</span><span class="na">setMainHost</span><span class="p">(</span><span class="n">recv</span><span class="p">.</span><span class="na">getHostId</span><span class="p">());</span>
+        <span class="n">toast</span><span class="p">(</span><span class="s">&quot;登录网关成功 &quot;</span> <span class="o">+</span> <span class="n">recv</span><span class="p">.</span><span class="na">getSessionId</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onFailure</span><span class="p">(</span><span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s">&quot;10002&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">errorCode</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">toast</span><span class="p">(</span><span class="s">&quot;密码错误&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="s">&quot;10025&quot;</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">errorCode</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">toast</span><span class="p">(</span><span class="s">&quot;等待网关管理员同意&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">toast</span><span class="p">(</span><span class="s">&quot;注册网关失败 &quot;</span> <span class="o">+</span> <span class="n">errorCode</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="上一页: 入门指南" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              入门指南
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../AndroidAPI/" class="md-footer__link md-footer__link--next" aria-label="下一页: Android SDK API" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              Android SDK API
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 - 2021 Vensi
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.8397ff9e.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e84347e.min.js"></script>
+      
+    
+  </body>
+</html>
