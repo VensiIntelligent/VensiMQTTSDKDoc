@@ -68,6 +68,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#ios-sdk" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -306,10 +311,83 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          iOS SDK 集成指南
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         iOS SDK 集成指南
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    导入库
+  </a>
+  
+    <nav class="md-nav" aria-label="导入库">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cocoapods" class="md-nav__link">
+    CocoaPods 导入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    手动导入
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    项目配置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infoplist" class="md-nav__link">
+    Info.plist 设置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    使用示例
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -626,15 +704,210 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    导入库
+  </a>
+  
+    <nav class="md-nav" aria-label="导入库">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cocoapods" class="md-nav__link">
+    CocoaPods 导入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    手动导入
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    项目配置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infoplist" class="md-nav__link">
+    Info.plist 设置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    使用示例
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>iOS SDK 集成指南</h1>
-                
-                
+                <h1 id="ios-sdk">iOS SDK 快速接入<a class="headerlink" href="#ios-sdk" title="Permanent link">&para;</a></h1>
+<h2 id="_1">导入库<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="cocoapods">CocoaPods 导入<a class="headerlink" href="#cocoapods" title="Permanent link">&para;</a></h3>
+<p>在 podfile 加入  </p>
+<div class="highlight"><pre><span></span><code>pod &#39;VensiMqtt_iOS&#39;, :path =&gt; &#39;../../SDK&#39;
+</code></pre></div>
+<p>然后执行 pod install</p>
+<blockquote>
+<p>path 就是 sdk 在本地的路径</p>
+</blockquote>
+<h3 id="_2">手动导入<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>直接将 VensiMqtt.framework, VDeviceModelType.framework 拖入项目，然后再导入 MQTTClient, YYModel, CocoaAsyncSocket 第三方库。</p>
+<blockquote>
+<p>注意：dyld: Library not loaded</p>
+</blockquote>
+<p>手动导入时，要在 General -&gt; Embedded Binaries 导入 VensiMqtt.framework, VDeviceModelType.framework，不然运行就会出现以下崩溃日志。</p>
+<div class="highlight"><pre><span></span><code>dyld: Library not loaded: @rpath/VensiMqtt.framework/VensiMqtt....
+</code></pre></div>
+<h2 id="_3">项目配置<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="infoplist">Info.plist 设置<a class="headerlink" href="#infoplist" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;key&gt;</span>NSLocalNetworkUsageDescription<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;string&gt;</span>获取局域网权限<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;key&gt;</span>NSAppTransportSecurity<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;dict&gt;</span>
+        <span class="nt">&lt;key&gt;</span>NSAllowsArbitraryLoads<span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;true/&gt;</span>
+    <span class="nt">&lt;/dict&gt;</span>
+</code></pre></div>
+<ul>
+<li>NSAppTransportSecurity: NSAllowsArbitraryLoads: true: 允许进行 http 网络请求</li>
+<li>NSLocalNetworkUsageDescription: 局域网权限</li>
+</ul>
+<h2 id="_4">使用示例<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>以下示例使用 Swift  </p>
+<p>初始化  </p>
+<div class="highlight"><pre><span></span><code><span class="kd">import</span> <span class="nc">VensiMqtt</span>
+<span class="kd">import</span> <span class="nc">AFNetworking</span>
+
+<span class="c1">// 公司标识 需要向本公司申请</span>
+<span class="n">VensiMqtt</span><span class="p">.</span><span class="n">managerd</span><span class="p">().</span><span class="n">company</span> <span class="p">=</span> <span class="s">&quot;xxx&quot;</span>
+<span class="c1">// 手机型号</span>
+<span class="n">VensiMqtt</span><span class="p">.</span><span class="n">managerd</span><span class="p">().</span><span class="n">os</span> <span class="p">=</span> <span class="s">&quot;iPhone 12&quot;</span>
+<span class="c1">// 是否打印信息</span>
+<span class="n">VensiMqtt</span><span class="p">.</span><span class="n">managerd</span><span class="p">().</span><span class="n">logLevel</span> <span class="p">=</span> <span class="p">.</span><span class="n">on</span>
+<span class="c1">// 监听mqtt连接状态</span>
+<span class="n">VReportMsgApi</span><span class="p">.</span><span class="n">shared</span><span class="p">().</span><span class="n">delegate</span> <span class="p">=</span> <span class="kc">self</span>
+<span class="c1">// 账号(唯一id), 可用 UUID.init().uuidString, 手机号，或者其他唯一码.</span>
+<span class="c1">// 不过要注意, 账号id长度 6 ~ 32，并且只能由字母和数字组成</span>
+<span class="c1">// 如果用uuid，需要去掉横杠</span>
+<span class="n">VensiMqtt</span><span class="p">.</span><span class="n">managerd</span><span class="p">().</span><span class="n">account</span> <span class="p">=</span> <span class="s">&quot;唯一id&quot;</span>
+<span class="c1">// 连接mqtt</span>
+<span class="kd">let</span> <span class="nv">config</span> <span class="p">=</span> <span class="n">VMqttConfig</span><span class="p">()</span>
+<span class="n">config</span><span class="p">.</span><span class="n">host</span> <span class="p">=</span> <span class="s">&quot;127.0.0.1&quot;</span>
+<span class="n">config</span><span class="p">.</span><span class="n">port</span> <span class="p">=</span> <span class="mi">1883</span>
+<span class="n">VensiMqtt</span><span class="p">.</span><span class="n">managerd</span><span class="p">().</span><span class="n">connectServer</span><span class="p">(</span><span class="n">with</span><span class="p">:</span> <span class="n">config</span><span class="p">)</span>
+
+
+<span class="c1">/// 监听网络变化</span>
+<span class="c1">/// 如果只走云端，或者想自己去管理udp局域网发现网关等等，就不用这个方法，自行去管理就行</span>
+<span class="c1">// 初始化监听</span>
+<span class="kd">let</span> <span class="nv">networkReachabilityManager</span> <span class="p">=</span> <span class="n">AFNetworkReachabilityManager</span><span class="p">.</span><span class="n">shared</span><span class="p">()</span>
+<span class="c1">// 监听回调</span>
+<span class="kc">self</span><span class="p">.</span><span class="n">networkReachabilityManager</span><span class="p">?.</span><span class="n">setReachabilityStatusChange</span><span class="p">({</span> <span class="p">[</span><span class="kr">unowned</span> <span class="kc">self</span><span class="p">]</span> <span class="p">(</span><span class="n">status</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">switch</span> <span class="n">status</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="p">.</span><span class="n">notReachable</span><span class="p">:</span>
+        <span class="n">VUdpApi</span><span class="p">.</span><span class="n">monitorNetwork</span><span class="p">(</span><span class="n">withNetworkType</span><span class="p">:</span> <span class="p">.</span><span class="n">noNetwork</span><span class="p">)</span>
+    <span class="k">case</span> <span class="p">.</span><span class="n">reachableViaWWAN</span><span class="p">:</span>
+        <span class="n">VUdpApi</span><span class="p">.</span><span class="n">monitorNetwork</span><span class="p">(</span><span class="n">withNetworkType</span><span class="p">:</span> <span class="p">.</span><span class="n">cellular</span><span class="p">)</span>
+    <span class="k">case</span> <span class="p">.</span><span class="n">reachableViaWiFi</span><span class="p">:</span>
+        <span class="n">VUdpApi</span><span class="p">.</span><span class="n">monitorNetwork</span><span class="p">(</span><span class="n">withNetworkType</span><span class="p">:</span> <span class="p">.</span><span class="n">LAN</span><span class="p">)</span>
+    <span class="k">case</span> <span class="p">.</span><span class="n">unknown</span><span class="p">:</span>
+        <span class="n">VUdpApi</span><span class="p">.</span><span class="n">monitorNetwork</span><span class="p">(</span><span class="n">withNetworkType</span><span class="p">:</span> <span class="p">.</span><span class="n">noNetwork</span><span class="p">)</span>
+    <span class="p">@</span><span class="n">unknown</span> <span class="k">default</span><span class="p">:</span>
+        <span class="n">VUdpApi</span><span class="p">.</span><span class="n">monitorNetwork</span><span class="p">(</span><span class="n">withNetworkType</span><span class="p">:</span> <span class="p">.</span><span class="n">noNetwork</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+<span class="c1">// 开始监听</span>
+<span class="n">networkReachabilityManager</span><span class="p">.</span><span class="n">startMonitoring</span><span class="p">()</span>
+
+
+<span class="c1">// 设置主网关</span>
+<span class="c1">// 在已经存在网关的时候，初始化时要设置该参数，内部会自动根据网关id，做一些操作</span>
+<span class="n">VensiMqtt</span><span class="p">.</span><span class="n">managerd</span><span class="p">().</span><span class="n">setMainHostIdArr</span><span class="p">([</span><span class="s">&quot;网关id&quot;</span><span class="p">])</span>
+</code></pre></div>
+<p>注册网关  </p>
+<blockquote>
+<p>要初始化连接成功，才能去调用</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kd">import</span> <span class="nc">VensiMqtt</span>
+
+<span class="kd">let</span> <span class="nv">hostId</span> <span class="p">=</span> <span class="s">&quot;网关id&quot;</span>
+
+<span class="c1">// 如需要切换该网关为主网关时，就需要调用该方法</span>
+<span class="c1">// 如果只是单纯的注册，可不用切换</span>
+<span class="n">VensiMqtt</span><span class="p">.</span><span class="n">managerd</span><span class="p">().</span><span class="n">setMainHostIdArr</span><span class="p">([</span><span class="n">hostId</span><span class="p">])</span>
+
+<span class="c1">// 调用注册</span>
+<span class="n">VGatewayApi</span><span class="p">.</span><span class="n">register</span><span class="p">(</span><span class="n">withHostId</span><span class="p">:</span> <span class="n">hostId</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="s">&quot;123456&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="s">&quot;iPhone 12&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="k">in</span>
+
+    <span class="k">if</span> <span class="kd">let</span> <span class="nv">sspen</span> <span class="p">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&quot;sspen&quot;</span><span class="p">]</span> <span class="k">as</span><span class="p">?</span> <span class="nb">String</span> <span class="p">{</span>        
+        <span class="k">if</span> <span class="n">sspen</span> <span class="p">==</span> <span class="s">&quot;1&quot;</span> <span class="p">{</span>
+            <span class="bp">print</span><span class="p">(</span><span class="s">&quot;注册成功&quot;</span><span class="p">)</span>
+        <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
+            <span class="bp">print</span><span class="p">(</span><span class="s">&quot;等待审核&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;返回参数有问题&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+<span class="p">}</span> <span class="n">errorCallback</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">errorCode</span><span class="p">)</span> <span class="k">in</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;登录失败</span><span class="si">\(</span><span class="n">errorCode</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>获取设备列表</p>
+<div class="highlight"><pre><span></span><code><span class="kd">import</span> <span class="nc">VensiMqtt</span>
+
+<span class="c1">// 调用获取设备列表</span>
+<span class="n">VDeviceApi</span><span class="p">.</span><span class="n">getDeviceList</span><span class="p">(</span><span class="n">withHostId</span><span class="p">:</span> <span class="s">&quot;网关id&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">deviceList</span><span class="p">)</span> <span class="k">in</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;获取成功设备列表: </span><span class="si">\(</span><span class="n">deviceList</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span> <span class="n">errorCallback</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">errcode</span><span class="p">)</span> <span class="k">in</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;获取失败: </span><span class="si">\(</span><span class="n">errcode</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>更多示例请看 DEMO</p>
                 
               
               
