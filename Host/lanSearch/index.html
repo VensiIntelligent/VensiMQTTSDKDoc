@@ -11,14 +11,14 @@
         <meta name="author" content="LJJ">
       
       
-        <link rel="canonical" href="https://derrors.github.io/Device/scene/">
+        <link rel="canonical" href="https://derrors.github.io/Host/lanSearch/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.4">
     
     
       
-        <title>情景 - 威士丹利 MQTT SDK 文档</title>
+        <title>局域网搜索网关 - 威士丹利 MQTT SDK 文档</title>
       
     
     
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              情景
+              局域网搜索网关
             
           </span>
         </div>
@@ -351,12 +351,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -379,7 +381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Host/registerloginuser/" class="md-nav__link">
+      <a href="../registerloginuser/" class="md-nav__link">
         注册、登录、用户管理
       </a>
     </li>
@@ -393,100 +395,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Host/update/" class="md-nav__link">
+      <a href="../update/" class="md-nav__link">
         网关固件升级
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Host/lanSearch/" class="md-nav__link">
-        局域网搜索网关
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5">
-          设备相关
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="设备相关" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
-          <span class="md-nav__icon md-icon"></span>
-          设备相关
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../addremove/" class="md-nav__link">
-        设备的入网、离网、获取设备列表
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../status/" class="md-nav__link">
-        设备控制，状态监听
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../area/" class="md-nav__link">
-        区域
       </a>
     </li>
   
@@ -509,12 +419,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          情景
+          局域网搜索网关
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        情景
+        局域网搜索网关
       </a>
       
         
@@ -533,35 +443,14 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    添加、修改情景
+    注册搜索上报回调
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    删除情景
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    获取情景列表
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    获取某个情景详情
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    触发情景
+  <a href="#udp" class="md-nav__link">
+    发送搜索的 UDP 消息
   </a>
   
 </li>
@@ -575,13 +464,103 @@
 
             
           
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          设备相关
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="设备相关" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          设备相关
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
             
               
   
   
   
     <li class="md-nav__item">
-      <a href="../auto/" class="md-nav__link">
+      <a href="../../Device/addremove/" class="md-nav__link">
+        设备的入网、离网、获取设备列表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Device/status/" class="md-nav__link">
+        设备控制，状态监听
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Device/area/" class="md-nav__link">
+        区域
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Device/scene/" class="md-nav__link">
+        情景
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Device/auto/" class="md-nav__link">
         自动化
       </a>
     </li>
@@ -621,7 +600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../DeviceSceneSwitch/" class="md-nav__link">
+      <a href="../../Device/DeviceSceneSwitch/" class="md-nav__link">
         情景开关
       </a>
     </li>
@@ -635,7 +614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../DeviceZigbeeLock/" class="md-nav__link">
+      <a href="../../Device/DeviceZigbeeLock/" class="md-nav__link">
         zigbee门锁
       </a>
     </li>
@@ -649,7 +628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../DeviceSensor/" class="md-nav__link">
+      <a href="../../Device/DeviceSensor/" class="md-nav__link">
         传感器
       </a>
     </li>
@@ -663,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../DeviceInfraredRepeater/" class="md-nav__link">
+      <a href="../../Device/DeviceInfraredRepeater/" class="md-nav__link">
         红外转发器
       </a>
     </li>
@@ -677,7 +656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../DeviceAirController/" class="md-nav__link">
+      <a href="../../Device/DeviceAirController/" class="md-nav__link">
         中央空调控制器
       </a>
     </li>
@@ -725,35 +704,14 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    添加、修改情景
+    注册搜索上报回调
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    删除情景
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    获取情景列表
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    获取某个情景详情
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    触发情景
+  <a href="#udp" class="md-nav__link">
+    发送搜索的 UDP 消息
   </a>
   
 </li>
@@ -771,88 +729,37 @@
               
                 
                 
-                <h1 id="_1">情景<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>网关的情景功能即是设置一组动作，在其中设置多个设备的控制状态，在触发情景时一起执行这些状态控制，列如回家情景，里面设置了客厅多盏灯一起开启。</p>
-<h2 id="_2">添加、修改情景<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+                <h1 id="_1">局域网搜索网关<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>网关支持在局域网中被搜索出来，使用时需要确保手机和网关在相同的局域网当中。</p>
+<h2 id="_2">注册搜索上报回调<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Android</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="n">SceneApi</span><span class="p">.</span><span class="na">SceneActionBuilder</span> <span class="n">sceneActionBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SceneApi</span><span class="p">.</span><span class="na">SceneActionBuilder</span><span class="p">()</span>
-    <span class="p">.</span><span class="na">setDeviceId</span><span class="p">(</span><span class="n">device</span><span class="p">.</span><span class="na">getDeviceId</span><span class="p">())</span> <span class="c1">// 设备名称</span>
-    <span class="p">.</span><span class="na">setDeviceType</span><span class="p">(</span><span class="n">device</span><span class="p">.</span><span class="na">getDeviceType</span><span class="p">())</span> <span class="c1">// 设备类型</span>
-    <span class="p">.</span><span class="na">setDeviceName</span><span class="p">(</span><span class="n">device</span><span class="p">.</span><span class="na">getDeviceName</span><span class="p">())</span> <span class="c1">// 设备名称</span>
-    <span class="p">.</span><span class="na">setAttrId</span><span class="p">(</span><span class="s">&quot;status&quot;</span><span class="p">)</span> <span class="c1">// 控制参数</span>
-    <span class="p">.</span><span class="na">setAttrValue</span><span class="p">(</span><span class="s">&quot;on&quot;</span><span class="p">)</span>   <span class="c1">// 控制值</span>
-    <span class="p">.</span><span class="na">setOrder</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">)</span> <span class="c1">// 顺序</span>
-    <span class="p">.</span><span class="na">setDelayTime</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">);</span> <span class="c1">// 间隔时间 秒</span>
-<span class="n">SceneApi</span><span class="p">.</span><span class="na">SceneBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SceneApi</span><span class="p">.</span><span class="na">SceneBuilder</span><span class="p">(</span><span class="n">hostId</span><span class="p">);</span>
-<span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">SceneApi</span><span class="p">.</span><span class="na">SceneActionBuilder</span><span class="o">&gt;</span> <span class="n">sceneActionBuilders</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
-<span class="n">sceneActionBuilders</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">sceneActionBuilder</span><span class="p">);</span>
-<span class="n">builder</span>
-    <span class="p">.</span><span class="na">setImg</span><span class="p">(</span><span class="s">&quot;00&quot;</span><span class="p">)</span> <span class="c1">// 图标由开发者自定义，对应自己的图标标识</span>
-    <span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;回家情景&quot;</span><span class="p">)</span>
-    <span class="p">.</span><span class="na">setConfig</span><span class="p">(</span><span class="n">sceneActionBuilders</span><span class="p">);</span>
-<span class="c1">// 编辑情景的话，保持情景 id 不变  SceneApi.SceneBuilder(hostId, sceneId); SceneApi.SceneActionBuilder(actionId)</span>
-<span class="n">SceneApi</span><span class="p">.</span><span class="na">edit</span><span class="p">(</span><span class="n">hostId</span><span class="p">,</span> <span class="n">builder</span><span class="p">,</span> <span class="k">new</span> <span class="n">MqttCallback</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
-
+<div class="highlight"><pre><span></span><code><span class="n">ReportMsgApi</span><span class="p">.</span><span class="na">setOnHostLanSearchReport</span><span class="p">(</span><span class="k">new</span> <span class="n">ReportMsgApi</span><span class="p">.</span><span class="na">OnHostLanSearchReport</span><span class="p">()</span> <span class="p">{</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// 创建成功</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">search</span><span class="p">(</span><span class="n">UDPFind</span><span class="p">.</span><span class="na">Recv</span> <span class="n">host</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 这里上报的是没有管理员的网关</span>
+        <span class="n">host</span><span class="p">.</span><span class="na">getHostIp</span><span class="p">();</span> <span class="c1">// 网关 ip</span>
+        <span class="n">host</span><span class="p">.</span><span class="na">getId</span><span class="p">();</span> <span class="c1">// 网关 id</span>
     <span class="p">}</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onFailure</span><span class="p">(</span><span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// 创建失败</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">searchAll</span><span class="p">(</span><span class="n">UDPFind</span><span class="p">.</span><span class="na">Recv</span> <span class="n">host</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 这里上报所有能搜索到的网关</span>
+        <span class="n">host</span><span class="p">.</span><span class="na">getHostIp</span><span class="p">();</span> <span class="c1">// 网关 ip</span>
+        <span class="n">host</span><span class="p">.</span><span class="na">getId</span><span class="p">();</span> <span class="c1">// 网关 id</span>
     <span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
-<h2 id="_3">删除情景<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="udp">发送搜索的 UDP 消息<a class="headerlink" href="#udp" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Android</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="n">SceneApi</span><span class="p">.</span><span class="na">delete</span><span class="p">(</span><span class="n">hostId</span><span class="p">,</span> <span class="n">sceneId</span><span class="p">,</span> <span class="k">new</span> <span class="n">MqttCallback</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// 删除成功</span>
-    <span class="p">}</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onFailure</span><span class="p">(</span><span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// 删除失败</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div>
-<h2 id="_4">获取情景列表<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Android</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="n">SceneApi</span><span class="p">.</span><span class="na">getList</span><span class="p">(</span><span class="n">hostId</span><span class="p">,</span> <span class="k">new</span> <span class="n">MqttCallback</span><span class="o">&lt;</span><span class="n">SceneList</span><span class="p">.</span><span class="na">Recv</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="p">(</span><span class="n">SceneList</span><span class="p">.</span><span class="na">Recv</span> <span class="n">recv</span><span class="p">,</span> <span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// 情景列表</span>
-        <span class="n">List</span><span class="o">&lt;</span><span class="n">SceneList</span><span class="p">.</span><span class="na">Recv</span><span class="p">.</span><span class="na">Scene</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">recv</span><span class="p">.</span><span class="na">getConfig</span><span class="p">()</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div>
-<h2 id="_5">获取某个情景详情<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Android</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="n">SceneApi</span><span class="p">.</span><span class="na">getDetail</span><span class="p">(</span><span class="n">hostId</span><span class="p">,</span> <span class="n">sceneId</span><span class="p">,</span> <span class="k">new</span> <span class="n">MqttCallback</span><span class="o">&lt;</span><span class="n">com</span><span class="p">.</span><span class="na">vensi</span><span class="p">.</span><span class="na">mqtt</span><span class="p">.</span><span class="na">sdk</span><span class="p">.</span><span class="na">bean</span><span class="p">.</span><span class="na">scene</span><span class="p">.</span><span class="na">SceneDetail</span><span class="p">.</span><span class="na">Recv</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="p">(</span><span class="n">SceneDetail</span><span class="p">.</span><span class="na">Recv</span> <span class="n">recv</span><span class="p">,</span> <span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
-
-    <span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div>
-<h2 id="_6">触发情景<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Android</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="n">SceneApi</span><span class="p">.</span><span class="na">control</span><span class="p">(</span><span class="n">hostId</span><span class="p">,</span> <span class="n">sceneId</span><span class="p">,</span> <span class="k">new</span> <span class="n">MqttCallback</span><span class="o">&lt;&gt;</span><span class="p">()));</span>
+<div class="highlight"><pre><span></span><code><span class="c1">//  初始化 UDP 服务，如果不再使用可以调用 UdpApi.destroyUdp() 销毁</span>
+<span class="n">UdpApi</span><span class="p">.</span><span class="na">initUpd</span><span class="p">();</span>
+<span class="c1">// 发送搜索的 UDP 消息，可以定时循环的发送</span>
+<span class="c1">// true 搜索全部网关，false 搜索没有管理员的网关</span>
+<span class="n">HostApi</span><span class="p">.</span><span class="na">sendSearchLanHost</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
 </code></pre></div>
                 
               
@@ -873,7 +780,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../area/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 区域" rel="prev">
+        <a href="../update/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 网关固件升级" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -882,20 +789,20 @@
               <span class="md-footer__direction">
                 上一页
               </span>
-              区域
+              网关固件升级
             </div>
           </div>
         </a>
       
       
         
-        <a href="../auto/" class="md-footer__link md-footer__link--next" aria-label="下一页: 自动化" rel="next">
+        <a href="../../Device/addremove/" class="md-footer__link md-footer__link--next" aria-label="下一页: 设备的入网、离网、获取设备列表" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              自动化
+              设备的入网、离网、获取设备列表
             </div>
           </div>
           <div class="md-footer__button md-icon">
