@@ -759,11 +759,11 @@
 <ul>
 <li>Android</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1">// password 加密后的门锁密码（加密算法需要询问我们的开发人员）</span>
-<span class="n">DeviceApi</span><span class="p">.</span><span class="na">control</span><span class="p">(</span><span class="n">hostId</span><span class="p">,</span> <span class="n">deviceId</span><span class="p">,</span> <span class="n">deviceType</span><span class="p">,</span> <span class="n">zoneId</span><span class="p">,</span> <span class="n">DeviceControlKey</span><span class="p">.</span><span class="na">ON_OFF</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="k">new</span> <span class="n">MqttCallback</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">String</span> <span class="n">password</span> <span class="o">=</span> <span class="s">&quot;123456&quot;</span><span class="p">;</span>
+<span class="n">LockApi</span><span class="p">.</span><span class="na">openLock</span><span class="p">(</span><span class="n">hostId</span><span class="p">,</span> <span class="n">deviceId</span><span class="p">,</span> <span class="n">deviceType</span><span class="p">,</span> <span class="n">zoneId</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="k">new</span> <span class="n">IBaseCallback</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="p">(</span><span class="n">String</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSuccess</span><span class="p">(</span><span class="n">String</span> <span class="n">recv</span><span class="p">,</span> <span class="kt">int</span> <span class="n">callBackMark</span><span class="p">,</span> <span class="n">String</span> <span class="n">errorCode</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// 发送成功</span>
     <span class="p">}</span>
 
