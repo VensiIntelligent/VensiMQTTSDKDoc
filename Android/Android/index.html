@@ -953,6 +953,12 @@
             <span class="k">case</span> <span class="n">MqttStateCode</span><span class="p">.</span><span class="na">MQTT_STATE_CONNECT_LOST_INITIATIVE</span><span class="p">:</span>
                 <span class="c1">// 手动断开连接</span>
                 <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="n">MqttStateCode</span><span class="p">.</span><span class="na">MQTT_STATE_USER_ID_SUBSCRIBE_SUCCESS</span><span class="p">:</span>
+                <span class="c1">// 订阅 userId 成功（建议在此处进行网关注册，登录的操作）</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="n">MqttStateCode</span><span class="p">.</span><span class="na">MQTT_STATE_USER_ID_SUBSCRIBE_FAILURE</span><span class="p">:</span>
+                <span class="c1">// 订阅 userId 失败 </span>
+                <span class="k">break</span><span class="p">;</span>
         <span class="p">}</span>        
     <span class="p">}</span>
 <span class="p">});</span>
